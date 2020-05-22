@@ -1,1 +1,18 @@
-<p>comment works!</p>
+<div *ngFor="let item of comentarios" class="card">
+    <div class="container">
+      <h4><b>({{ item.id }}) {{ item.name }}</b></h4> 
+      <h4><b>{{ item.email }}</b></h4>
+      <p>{{ item.body }}</p> 
+    </div>
+</div>
+
+<div *ngIf="idPost == null">
+  <h1>Todos Comentarios Do Sistema</h1>
+  <div *ngFor="let item of todosComentarios" class="card">
+    <div class="container">
+      <h4><b>({{ item.id }}) {{ item.name }}</b></h4> 
+      <h4><b>{{ item.email }}</b></h4>
+      <p>{{ item.body }}</p> 
+    </div>
+  </div>
+</div>

@@ -1,1 +1,32 @@
-<p>post works!</p>
+<form #cadastroPost="ngForm" (ngSubmit)="onSubmit(post)">
+    <div class="form-group">
+        <label>Título</label>
+        <input type="text" name="title" [(ngModel)]="post.title" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Comentário</label>
+        <input type="text" name="body" [(ngModel)]="post.body" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Usuario</label>
+        <select class="form-control" name="userId" [(ngModel)]="post.userId">
+            <option *ngFor="let item of usuarios" [value]='item.id'>
+                {{ item.name }}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-danger btn-block">
+            Enviar
+        </button>
+    </div>
+</form>
+<hr>
+<div *ngFor="let item of posts">
+    <h1>{{ item.title }}</h1>
+    <p>{{ item.body }}</p>
+    <button (click)="exibicaodeComentarios(item.id)">
+        Exibir Comentarios
+    </button>
+    <app-comment [idPost]=item.id *ngIf="item.exibirComentario"></app-comment>
+</div>
